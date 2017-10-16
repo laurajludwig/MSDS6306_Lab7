@@ -1,0 +1,27 @@
+---
+title: "Word File Report of MSDS6306: Lab8"
+author: "Jenny Bryan, Jongwook Woo"
+Updated by: "Jongwook Woo"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+
+```{r load-hist-dat, include = FALSE}
+hist_dat <- read.delim("histogram.tsv")
+```
+
+On most *nix systems, the file `/usr/share/dict/words` contains a bunch of words. On my machine, it contains `r sum(hist_dat$Freq)` words.
+
+### The following shell code display the content of words file
+```{r, engine='bash', content_words}
+head /usr/share/dict/words
+```
+
+I computed the length of each word, i.e. the number of characters, and tabulated how many words consist of 1 character, 2 characters, etc.
+
+The most frequent word length is `r with(hist_dat, words_length[which.max(Freq)])`.
+
+Here is a histogram of word lengths.
+
+![*Fig. 1* A histogram of English word lengths](histogram.png)
